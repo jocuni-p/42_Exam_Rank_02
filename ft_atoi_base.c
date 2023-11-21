@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 11:57:19 by jocuni-p          #+#    #+#             */
-/*   Updated: 2023/11/21 12:36:20 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2023/11/21 18:08:42 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*Assignment name  : ft_atoi_base
@@ -34,7 +34,7 @@ int ft_atoi_base(const char *str, int str_base);*/
 //#include <stdio.h>
 //#include <stdlib.h>
 
-int char_to_digit(char c)
+int is_valid(char c)
 {
     if (c >= '0' && c <= '9')
         return (c - '0');
@@ -48,7 +48,7 @@ int char_to_digit(char c)
     return (-1);
 }
 
-/*si entra un arg NO reconocible se para y retorna 0 */
+/*en cuanto detecta un caracter NO reconocible finaliza y retorna lo que leyo hasta ese momento */
 int ft_atoi_base(const char *str, int str_base)
 {
     int sign = 1;
@@ -66,8 +66,8 @@ int ft_atoi_base(const char *str, int str_base)
 
     while (*str)
     {
-    	digit = char_to_digit(*str);//indice donde esta apuntando ahora el *str
-        if (digit == -1 || digit > str_base)//args invalidos o num > que su base
+    	digit = is_valid(*str);
+        if (digit == -1 || digit > str_base)//args NO reconocibles o > que str_base
             return (res * sign);
         else
             res = res * str_base + digit;
