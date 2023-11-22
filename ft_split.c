@@ -6,12 +6,27 @@
 /*   By: jocuni-p <jocuni-p@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 13:31:04 by jocuni-p          #+#    #+#             */
-/*   Updated: 2023/11/21 18:10:38 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2023/11/22 12:43:18 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+/*Assignment name  : ft_split
+Expected files   : ft_split.c
+Allowed functions: malloc
+--------------------------------------------------------------------------------
 
+Write a function that takes a string, splits it into words, and returns them as
+a NULL-terminated array of strings.
+
+A "word" is defined as a part of a string delimited either by spaces/tabs/new
+lines, or by the start/end of the string.
+
+Your function must be declared as follows:
+
+char    **ft_split(char *str);
+*/
 #include <unistd.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 char	*ft_strncpy(char *dst, char *src, int len)
 {
@@ -46,7 +61,7 @@ char	**ft_split(char *str)
 			i++;
 	}
 	char **split = (char **)malloc(sizeof(char *) * (wc + 1));
-	split[wc][0] = '\0';//cierro el array de strings
+	split[wc] = NULL;//cierro el array de strings
 
 	i = 0;
 	while (str[i])//recorro str para meter cada palabra en mi array de strings
@@ -63,6 +78,7 @@ char	**ft_split(char *str)
 		{
 			split[k] = (char *)malloc(sizeof(char) * (i - j) + 1);//alojo memoria para contener la palabra
 			ft_strncpy(split[k], &str[j], i - j);//relleno la memoria del array con la palabra
+			printf("despues del strncpy\n");
 			k++;
 		}
 	}
@@ -70,7 +86,7 @@ char	**ft_split(char *str)
 //	split[k] = '\0';
 	return (split);
 }
-/*
+
 int	main(int ac, char **av)
 {
 	int		i = 0;
@@ -80,6 +96,10 @@ int	main(int ac, char **av)
 	if (ac == 2)
 	{
 		split = ft_split(av[1]);
+		printf("0 = %s\n", split[0]);
+		printf("1 = %s\n", split[1]);
+		printf("2 = %s\n", split[2]);
+		printf("3 = %s\n", split[3]);
 		while(split[i])
 		{
 			j = 0;
@@ -94,4 +114,4 @@ int	main(int ac, char **av)
 		free(split);
 	}
 	return (0);
-}*/
+}
