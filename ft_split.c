@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 13:31:04 by jocuni-p          #+#    #+#             */
-/*   Updated: 2023/11/22 12:43:18 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2023/11/22 17:22:37 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*Assignment name  : ft_split
@@ -57,33 +57,33 @@ char	**ft_split(char *str)
 		if (str[i])
 			wc++;
 
-		while (str[i] && (str[i] != ' ' || str[i] != '\t' || str[i] != '\n'))
+		while (str[i] && (str[i] != ' ' && str[i] != '\t' && str[i] != '\n'))//OJO con los &&
 			i++;
 	}
 	char **split = (char **)malloc(sizeof(char *) * (wc + 1));
-	split[wc] = NULL;//cierro el array de strings
-
+	split[wc] = NULL;//cierro el array de strings, apuntandolo a NULL (no puedo usar '\0' porque necesita una direccion de mem, NO un caracter).
 	i = 0;
-	while (str[i])//recorro str para meter cada palabra en mi array de strings
+	while (str[i])//recorro str para meter cada palabra en su propio array de strings
 	{
 		while (str[i] && (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'))
 			i++;//salto espacios/tabs/saltos de linia
 
 		j = i;//inicializo j donde empieza la palabra
 
-		while (str[i] && (str[i] != ' ' || str[i] != '\t' || str[i] != '\n'))
-			i++;//cuento los bytes/chars de la palabra
-
-		if (i > j)//si la palabra tiene 1 o mas bytes
+		while (str[i] && (str[i] != 32 && str[i] != 9 && str[i] != 10))
 		{
-			split[k] = (char *)malloc(sizeof(char) * (i - j) + 1);//alojo memoria para contener la palabra
+			i++;//cuento los chars de la palabra
+		}
+		if (i > j)//si la palabra tiene 1 o mas chars
+		{
+			split[k] = (char *)malloc(sizeof(char) * (i - j) + 1);//alojo memoria para la palabra
 			ft_strncpy(split[k], &str[j], i - j);//relleno la memoria del array con la palabra
-			printf("despues del strncpy\n");
 			k++;
 		}
+
+		j = 0;
 	}
-//El cerramiento del array de strings ya lo he hecho arriba despues de declararlo
-//	split[k] = '\0';
+//	split[k] = NULL;
 	return (split);
 }
 
@@ -96,10 +96,6 @@ int	main(int ac, char **av)
 	if (ac == 2)
 	{
 		split = ft_split(av[1]);
-		printf("0 = %s\n", split[0]);
-		printf("1 = %s\n", split[1]);
-		printf("2 = %s\n", split[2]);
-		printf("3 = %s\n", split[3]);
 		while(split[i])
 		{
 			j = 0;
