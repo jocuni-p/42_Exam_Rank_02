@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 13:31:04 by jocuni-p          #+#    #+#             */
-/*   Updated: 2023/11/22 17:22:37 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2023/11/23 11:15:46 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*Assignment name  : ft_split
@@ -49,10 +49,11 @@ char	**ft_split(char *str)
 	int	k = 0;
 	int	wc = 0;
 
-	while (str[i])//recorro el str para contar las palabras
+/*-------------RECORREMOS str PARA CONTAR LAS PALABRAS-------------*/
+	while (str[i])
 	{
 		while (str[i] && (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'))
-			i++;//salto espacios/tabs/saltos de linia
+			i++;
 
 		if (str[i])
 			wc++;
@@ -61,29 +62,29 @@ char	**ft_split(char *str)
 			i++;
 	}
 	char **split = (char **)malloc(sizeof(char *) * (wc + 1));
-	split[wc] = NULL;//cierro el array de strings, apuntandolo a NULL (no puedo usar '\0' porque necesita una direccion de mem, NO un caracter).
+	split[wc] = NULL;//cierro el array a NULL (no uso '\0' porque necesita una direccion de mem, NO un caracter).
+
+/*---------RECORREMOS str PARA METER CADA PALABRA EN SU PROPIO ARRAY---------*/
 	i = 0;
-	while (str[i])//recorro str para meter cada palabra en su propio array de strings
+	while (str[i])
 	{
 		while (str[i] && (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'))
-			i++;//salto espacios/tabs/saltos de linia
+			i++;
 
 		j = i;//inicializo j donde empieza la palabra
 
 		while (str[i] && (str[i] != 32 && str[i] != 9 && str[i] != 10))
 		{
-			i++;//cuento los chars de la palabra
+			i++;
 		}
 		if (i > j)//si la palabra tiene 1 o mas chars
 		{
-			split[k] = (char *)malloc(sizeof(char) * (i - j) + 1);//alojo memoria para la palabra
-			ft_strncpy(split[k], &str[j], i - j);//relleno la memoria del array con la palabra
+			split[k] = (char *)malloc(sizeof(char) * (i - j) + 1);
+			ft_strncpy(split[k], &str[j], i - j);//relleno el array con la palabra
 			k++;
 		}
-
 		j = 0;
 	}
-//	split[k] = NULL;
 	return (split);
 }
 

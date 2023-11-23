@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 11:37:53 by jocuni-p          #+#    #+#             */
-/*   Updated: 2023/11/16 10:37:56 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2023/11/23 12:45:22 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*Assignment name  : first_word
@@ -46,9 +46,9 @@ int	main(int ac, char **av)
 	i = 0;
 	if (ac == 2)
 	{
-		while (av[1][i] != '\0' && (av[1][i] == 9 || av[1][i] == 11 || av[1][i] == 32))
+		while (av[1][i] != '\0' && (av[1][i] == 9 || av[1][i] == 32))
 				i++;
-		while (av[1][i] != '\0' && (av[1][i] != 9 && av[1][i] != 11 && av[1][i] != 32))
+		while (av[1][i] != '\0' && av[1][i] != 9 && av[1][i] != 32)
 		{
 			write(1, &av[1][i], 1);
 			i++;

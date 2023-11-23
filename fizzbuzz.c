@@ -6,7 +6,7 @@
 /*   By: joan <jocuni-p@student.42barcelona.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:53:58 by joan              #+#    #+#             */
-/*   Updated: 2023/11/16 11:02:28 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2023/11/23 12:05:12 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*Assignment name  : fizzbuzz
@@ -85,3 +85,37 @@ int main(void)
         i++;
     }
 }
+/*-----------------OTRA OPCION---------------*/
+
+int main(void)
+{
+    int i = 1;
+    int j = 0;
+    int k = 0;
+
+    while (i <= 100)
+    {
+        if ((i % 3 == 0) && (i % 5 == 0))
+            write(1, "fizzbuzz", 8);
+        else if (i % 3 == 0)
+            write(1, "fizz", 4);
+        else if (i % 5 == 0)
+            write(1, "buzz", 4);
+        else if (i > 10)
+        {
+            j = i / 10 + '0';
+            k = i % 10 + '0';
+            write(1, &j, 1);
+            write(1, &k, 1);
+        }
+        else
+        {
+            j = i + '0';
+            write(1, &j, 1);
+        }
+        write(1, "\n", 1);
+        i++;
+    }
+    return (0);
+}
+
