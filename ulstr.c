@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 10:25:34 by jocuni-p          #+#    #+#             */
-/*   Updated: 2023/11/14 16:59:14 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2023/11/24 12:58:25 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*Assignment name  : ulstr
@@ -33,44 +33,24 @@ $>./ulstr | cat -e
 $
 */
 
-
 #include<unistd.h>
-
-void    ft_putchar(char c, int fd)
-{
-    write(fd, &c, 1);
-}
 
 int main(int ac, char **av)
 {
     int i = 0;
 
-	if (ac == 2)
-	{
-    	while (av[1][i] != '\0')
-    	{
-       		if (av[1][i] >= 65 && av[1][i] <= 90)
-            	av[1][i] = av[1][i] + 32;
-        	else if (av[1][i] >= 97 && av[1][i] <= 122)
-            	av[1][i] = av[1][i] - 32;
-			write(1, &av[1][i], 1);
-        	i++;
-    	}
-
-/*-------------------OTRA MANERA VALIDA---------------------*/
-/*
-		while (av[1][i] != '\0')
+    if (ac == 2)
+    {
+        while (av[1][i])
         {
-            if (av[1][i] >= 'A' && av[1][i] <= 'Z')
-                ft_putchar(av[1][i] + 32);
-            else if (av[1][i] >= 'a' && av[1][i] <= 'z')
-                ft_putchar(av[1][i] - 32);
-            else
-                write(1, &av[1][i], 1);
+            if (av[1][i] >= 'a' && av[1][i] <= 'z')
+                av[1][i] = av[1][i] - 32;
+            else if (av[1][i] >= 'A' && av[1][i] <= 'Z')
+                av[1][i] = av[1][i] + 32;
+            write(1, &av[1][i], 1);
             i++;
         }
-*/
-	}
-    ft_putchar('\n', 1);
-   	return (0);
+    }
+    write(1, "\n", 1);
+    return (0);
 }
