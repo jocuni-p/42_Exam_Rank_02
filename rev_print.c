@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 09:51:12 by jocuni-p          #+#    #+#             */
-/*   Updated: 2023/11/23 15:40:18 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2023/12/09 23:12:02 by joan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -50,7 +50,7 @@ int main(int ac, char **av)
     return (0);
 }
 
-/*------------------OTRA FORMA MENOS CLARA------------------*/
+/*-------------ALTERNATIVE------------------*/
 int main(int ac, char **av)
 {
     int i;

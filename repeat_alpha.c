@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 14:43:00 by jocuni-p          #+#    #+#             */
-/*   Updated: 2023/11/23 15:00:01 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2023/12/09 23:11:29 by joan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*Assignment name  : repeat_alpha
@@ -72,7 +72,7 @@ int main(int ac, char **av)
     return (0);
 }
 
-/*-------------------------OTRA FORMA MAS LARGA---------------------*/
+/*---------------ALTERNATIVE---------------*/
 void ft_putchar(char c, int fd)
 {
     write(fd, &c, 1);

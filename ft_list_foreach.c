@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 15:14:58 by jocuni-p          #+#    #+#             */
-/*   Updated: 2023/11/15 16:15:47 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2023/12/09 23:08:12 by joan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*Assignment name  : ft_list_foreach
@@ -35,7 +35,7 @@ typedef struct    s_list
 }                 t_list;*/
 
 
-/*-------AIXO S'HA D'ENTREGAR COM UN FILE APART QUE ES DIRA ft_list.h-------*/
+/*-------FILE ft_list.h-------*/
 
 #ifndef FT_LIST_H
 # define FT_LIST_H

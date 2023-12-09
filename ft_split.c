@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 13:31:04 by jocuni-p          #+#    #+#             */
-/*   Updated: 2023/11/23 11:15:46 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2023/12/09 23:10:45 by joan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*Assignment name  : ft_split
@@ -49,7 +49,7 @@ char	**ft_split(char *str)
 	int	k = 0;
 	int	wc = 0;
 
-/*-------------RECORREMOS str PARA CONTAR LAS PALABRAS-------------*/
+/*-------------ITERING str TO COUNT WORDS-------------*/
 	while (str[i])
 	{
 		while (str[i] && (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'))
@@ -64,7 +64,7 @@ char	**ft_split(char *str)
 	char **split = (char **)malloc(sizeof(char *) * (wc + 1));
 	split[wc] = NULL;//cierro el array a NULL (no uso '\0' porque necesita una direccion de mem, NO un caracter).
 
-/*---------RECORREMOS str PARA METER CADA PALABRA EN SU PROPIO ARRAY---------*/
+/*--------ITERING str TO CREATE AN ARRAY FOR EACH WORD---------*/
 	i = 0;
 	while (str[i])
 	{
@@ -73,7 +73,7 @@ char	**ft_split(char *str)
 
 		j = i;//inicializo j donde empieza la palabra
 
-		while (str[i] && (str[i] != 32 && str[i] != 9 && str[i] != 10))
+		while (str[i] && (str[i] != ' ' && str[i] != '\t' && str[i] != '\n'))
 		{
 			i++;
 		}
